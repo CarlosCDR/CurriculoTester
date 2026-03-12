@@ -200,6 +200,7 @@ pip install -r requirements_web.txt
 Este projeto é de código aberto. Sinta-se livre para usar e modificar.
 
 ## 👨‍💻 Autor
+Desenvolvido por Carlos Daniel Rodrigues.
 
 Desenvolvido com ❤️ para ajudar na avaliação de currículos.
 
