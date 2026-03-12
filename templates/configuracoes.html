@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="{{ settings['language'] }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações</title>
+    <style>
+        body {
+            background-color: {{ 'white' if settings['theme'] == 'light' else 'black' }};
+            color: {{ 'black' if settings['theme'] == 'light' else 'white' }};
+        }
+        .highlight {
+            color: {{ settings['highlight_color'] }};
+        }
+    </style>
+</head>
+<body>
+    <h1 class="highlight">Configurações</h1>
+    <form id="settings-form" method="POST">
+        <h2>Tema / Aparência</h2>
+        <label>
+            Tema:
+            <select name="theme">
+                <option value="light" {% if settings['theme'] == 'light' %}selected{% endif %}>Claro</option>
+                <option value="dark" {% if settings['theme'] == 'dark' %}selected{% endif %}>Escuro</option>
+            </select>
+        </label>
+        <label>
+            Cor de Destaque:
+            <input type="color" name="highlight_color" value="{{ settings['highlight_color'] }}">
+        </label>
+
+        <h2>Idioma</h2>
+        <label>
+            <select name="language">
+                <option value="pt" {% if settings['language'] == 'pt' %}selected{% endif %}>Português</option>
+                <option value="en" {% if settings['language'] == 'en' %}selected{% endif %}>Inglês</option>
+            </select>
+        </label>
+
+        <h2>Notificações</h2>
+        <label>
+            <input type="checkbox" name="notifications[enabled]" {% if settings['notifications']['enabled'] %}checked{% endif %}>
+            Ativar Notificações
+        </label>
+        <label>
+            <input type="checkbox" name="notifications[sounds]" {% if settings['notifications']['sounds'] %}checked{% endif %}>
+            Ativar Sons
+        </label>
+
+        <h2>Conta / Perfil</h2>
+        <label>
+            Nome:
+            <input type="text" name="account[name]" value="{{ settings['account']['name'] }}">
+        </label>
+        <label>
+            E-mail:
+            <input type="email" name="account[email]" value="{{ settings['account']['email'] }}">
+        </label>
+        <label>
+            Senha:
+            <input type="password" name="account[password]">
+        </label>
+        <label>
+            Foto de Perfil:
+            <input type="file" name="account[profile_picture]">
+        </label>
+
+        <h2>Preferências de Exibição</h2>
+        <label>
+            Tamanho da Fonte:
+            <select name="display_preferences[font_size]">
+                <option value="small" {% if settings['display_preferences']['font_size'] == 'small' %}selected{% endif %}>Pequeno</option>
+                <option value="medium" {% if settings['display_preferences']['font_size'] == 'medium' %}selected{% endif %}>Médio</option>
+                <option value="large" {% if settings['display_preferences']['font_size'] == 'large' %}selected{% endif %}>Grande</option>
+            </select>
+        </label>
+        <label>
+            Layout:
+            <select name="display_preferences[layout]">
+                <option value="list" {% if settings['display_preferences']['layout'] == 'list' %}selected{% endif %}>Lista</option>
+                <option value="grid" {% if settings['display_preferences']['layout'] == 'grid' %}selected{% endif %}>Grade</option>
+            </select>
+        </label>
+
+        <h2>Privacidade e Segurança</h2>
+        <label>
+            <input type="checkbox" name="privacy[show_sensitive_data]" {% if settings['privacy']['show_sensitive_data'] %}checked{% endif %}>
+            Mostrar Dados Sensíveis
+        </label>
+        <label>
+            <input type="checkbox" name="privacy[enable_2fa]" {% if settings['privacy']['enable_2fa'] %}checked{% endif %}>
+            Habilitar Autenticação 2FA
+        </label>
+
+        <h2>Outras Opções</h2>
+        <button type="button" onclick="resetSettings()">Resetar Configurações</button>
+        <label>
+            <input type="checkbox" name="auto_save" checked>
+            Salvar Automaticamente
+        </label>
+
+        <button type="submit">Salvar Configurações</button>
+    </form>
+
+    <script>
+        function resetSettings() {
+            fetch('/configuracoes', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({})
+            }).then(response => {
+                if (response.ok) {
+                    alert('Configurações resetadas para o padrão!');
+                    location.reload();
+                } else {
+                    alert('Erro ao resetar configurações.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

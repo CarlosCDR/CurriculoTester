@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}Configuração Avançada{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">
+                    <i class="fas fa-cogs me-2"></i>
+                    Configuração Avançada
+                </h4>
+            </div>
+            <div class="card-body">
+                <!-- Critérios Atuais -->
+                <div class="mb-4">
+                    <h5>Critérios de Avaliação Atuais</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Critério</th>
+                                    <th>Descrição</th>
+                                    <th>Peso</th>
+                                    <th>Palavras-Chave</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for criterio, config in criterios.items() %}
+                                <tr>
+                                    <td><strong>{{ criterio }}</strong></td>
+                                    <td>{{ config.descricao }}</td>
+                                    <td><span class="badge bg-primary">{{ config.peso }}%</span></td>
+                                    <td>
+                                        <small>
+                                            {{ config.get('palavras_chave', [])[:5]|join(', ') }}
+                                            {% if config.get('palavras_chave', [])|length > 5 %}
+                                                <em>e mais {{ config.get('palavras_chave', [])|length - 5 }}</em>
+                                            {% endif %}
+                                        </small>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Templates por Profissão -->
+                {% if exemplos %}
+                <div class="mb-4">
+                    <h5>Templates por Profissão</h5>
+                    <p class="text-muted">Clique em um template para ver os critérios recomendados:</p>
+
+                    <div class="row">
+                        {% for profissao, config in exemplos.items() %}
+                        <div class="col-md-6 mb-3">
+                            <div class="card template-card" onclick="showTemplate('{{ profissao }}')">
+                                <div class="card-body">
+                                    <h6 class="card-title">
+                                        <i class="fas fa-briefcase me-2"></i>
+                                        {{ profissao }}
+                                    </h6>
+                                    <p class="card-text small text-muted">
+                                        {{ config.criterios|length }} critérios configurados
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Como Customizar -->
+                <div class="alert alert-info">
+                    <h6><i class="fas fa-info-circle me-2"></i>Como Customizar</h6>
+                    <p class="mb-2">Para modificar os critérios, edite o arquivo <code>criterios.json</code>:</p>
+                    <ol class="mb-0">
+                        <li>Abra o arquivo <code>criterios.json</code> em um editor de texto</li>
+                        <li>Modifique os pesos, descrições ou palavras-chave</li>
+                        <li>Reinicie a aplicação</li>
+                    </ol>
+                </div>
+
+                <!-- Exemplo de JSON -->
+                <details class="mb-4">
+                    <summary class="btn btn-outline-secondary">
+                        <i class="fas fa-code me-2"></i>
+                        Ver Exemplo de JSON
+                    </summary>
+                    <div class="mt-3">
+                        <pre class="bg-light p-3 rounded"><code>{
+  "Experiência": {
+    "descricao": "Anos de experiência na área",
+    "peso": 25,
+    "palavras_chave": ["experiência", "anos", "trabalho"],
+    "tipo": "numerico"
+  },
+  "Habilidades Técnicas": {
+    "descricao": "Competências técnicas relevantes",
+    "peso": 30,
+    "palavras_chave": ["python", "javascript", "sql"],
+    "tipo": "lista"
+  }
+}</code></pre>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Templates -->
+<div class="modal fade" id="templateModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="templateModalTitle">Template</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="templateModalBody">
+                <!-- Conteúdo será preenchido via JavaScript -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const templates = {{ exemplos|tojson }};
+
+function showTemplate(profissao) {
+    const template = templates[profissao];
+    if (!template || !template.criterios) return;
+
+    let html = '<div class="table-responsive"><table class="table table-striped">';
+    html += '<thead><tr><th>Critério</th><th>Descrição</th><th>Peso</th><th>Palavras-Chave</th></tr></thead><tbody>';
+
+    for (const [criterio, config] of Object.entries(template.criterios)) {
+        html += `<tr>
+            <td><strong>${criterio}</strong></td>
+            <td>${config.descricao}</td>
+            <td><span class="badge bg-primary">${config.peso}%</span></td>
+            <td><small>${config.get('palavras_chave', [])[:5]|join(', ')}${config.get('palavras_chave', [])|length > 5 ? '...' : ''}</small></td>
+        </tr>`;
+    }
+
+    html += '</tbody></table></div>';
+
+    document.getElementById('templateModalTitle').textContent = `Template: ${profissao}`;
+    document.getElementById('templateModalBody').innerHTML = html;
+
+    const modal = new bootstrap.Modal(document.getElementById('templateModal'));
+    modal.show();
+}
+</script>
+{% endblock %}

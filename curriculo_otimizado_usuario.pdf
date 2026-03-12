@@ -1,0 +1,46 @@
+%PDF-1.4
+% Generated PDF for optimized resume
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /Resources << >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 5 0 R >>
+stream
+BT
+/F1 12 Tf
+72 720 Td
+(Seu Nome: [Seu Nome]) Tj
+T*
+(E-mail: [seuemail@email.com]) Tj
+T*
+(Telefone: [+55 11 99999-9999]) Tj
+T*
+(LinkedIn: [linkedin.com/in/seu-perfil]) Tj
+T*
+(GitHub: [github.com/seu-usuario]) Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Length 123 >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000010 00000 n 
+0000000053 00000 n 
+0000000100 00000 n 
+0000000173 00000 n 
+0000000240 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+307
+%%EOF

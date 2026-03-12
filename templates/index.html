@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block title %}Avaliador de Currículos - Análise Inteligente{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <!-- Header Card -->
+        <div class="card mb-4">
+            <div class="card-body text-center py-5">
+                <i class="fas fa-file-alt fa-4x text-primary mb-3"></i>
+                <h1 class="card-title">Avaliador de Currículos</h1>
+                <p class="card-text lead">
+                    Análise inteligente de currículos em PDF com critérios customizáveis.
+                    Obtenha pontuações automáticas e recomendações detalhadas.
+                </p>
+                <div class="row text-center mt-4">
+                    <div class="col-md-3">
+                        <i class="fas fa-upload fa-2x text-success mb-2"></i>
+                        <p class="small">Upload PDF</p>
+                    </div>
+                    <div class="col-md-3">
+                        <i class="fas fa-cogs fa-2x text-primary mb-2"></i>
+                        <p class="small">Configure Critérios</p>
+                    </div>
+                    <div class="col-md-3">
+                        <i class="fas fa-chart-line fa-2x text-warning mb-2"></i>
+                        <p class="small">Análise Automática</p>
+                    </div>
+                    <div class="col-md-3">
+                        <i class="fas fa-star fa-2x text-info mb-2"></i>
+                        <p class="small">Relatório Detalhado</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload Form -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-upload me-2"></i>
+                    Carregar Currículo
+                </h5>
+            </div>
+            <div class="card-body">
+                <form action="{{ url_for('analisar') }}" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="curriculo" class="form-label">
+                            Selecione um arquivo PDF do currículo
+                        </label>
+                        <input type="file" class="form-control" id="curriculo" name="curriculo"
+                               accept=".pdf" required>
+                        <div class="form-text">
+                            Apenas arquivos PDF são aceitos. Tamanho máximo: 16MB.
+                        </div>
+                    </div>
+
+                    <!-- Critérios de Avaliação -->
+                    <div class="mb-4">
+                        <h6 class="fw-bold mb-3">
+                            <i class="fas fa-check-square me-2"></i>
+                            Critérios de Avaliação
+                        </h6>
+                        <p class="text-muted small mb-3">
+                            Selecione quais critérios deseja usar na análise. Todos estão selecionados por padrão.
+                        </p>
+
+                        <div class="row">
+                            {% for criterio, config in criterios.items() %}
+                            <div class="col-md-6 mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox"
+                                           id="criterio_{{ criterio.replace(' ', '_').replace('ç', 'c').replace('ã', 'a').replace('é', 'e') }}"
+                                           name="criterio_{{ criterio.replace(' ', '_').replace('ç', 'c').replace('ã', 'a').replace('é', 'e') }}"
+                                           checked>
+                                    <label class="form-check-label" for="criterio_{{ criterio.replace(' ', '_').replace('ç', 'c').replace('ã', 'a').replace('é', 'e') }}">
+                                        <strong>{{ criterio }}</strong>
+                                        <br>
+                                        <small class="text-muted">{{ config.descricao }}</small>
+                                        <br>
+                                        <span class="badge bg-primary">{{ config.peso }}%</span>
+                                    </label>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-search me-2"></i>
+                            Analisar Currículo
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-brain text-primary me-2"></i>
+                            Análise Inteligente
+                        </h5>
+                        <p class="card-text">
+                            Usa algoritmos para identificar automaticamente habilidades,
+                            experiências e qualificações no currículo.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Pontuação automática 0-100</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Identificação de pontos fortes</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Detecção de lacunas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-cogs text-warning me-2"></i>
+                            Totalmente Customizável
+                        </h5>
+                        <p class="card-text">
+                            Configure pesos, critérios e palavras-chave conforme
+                            as necessidades específicas da sua vaga.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Critérios personalizáveis</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Templates por profissão</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Configuração avançada</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Preview do arquivo selecionado
+document.getElementById('curriculo').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        // Verificar tamanho
+        const sizeMB = file.size / (1024 * 1024);
+        if (sizeMB > 16) {
+            alert('Arquivo muito grande! Máximo 16MB.');
+            e.target.value = '';
+            return;
+        }
+
+        // Mostrar nome do arquivo
+        const fileName = file.name;
+        const fileSize = sizeMB.toFixed(2) + ' MB';
+
+        // Criar preview
+        const preview = document.createElement('div');
+        preview.className = 'alert alert-info mt-2';
+        preview.innerHTML = `
+            <i class="fas fa-file-pdf me-2"></i>
+            <strong>${fileName}</strong> (${fileSize})
+        `;
+
+        // Remover preview anterior
+        const oldPreview = document.querySelector('.alert-info');
+        if (oldPreview) oldPreview.remove();
+
+        // Adicionar novo preview
+        e.target.parentNode.appendChild(preview);
+    }
+});
+</script>
+{% endblock %}

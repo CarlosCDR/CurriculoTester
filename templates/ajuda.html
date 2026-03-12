@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+
+{% block title %}Ajuda - Como Usar{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <!-- Guia Rápido -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4 class="mb-0">
+                    <i class="fas fa-rocket me-2"></i>
+                    Guia Rápido de Uso
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            <span class="fw-bold fs-4">1</span>
+                        </div>
+                        <h6 class="mt-2">Carregar PDF</h6>
+                        <p class="small text-muted">Selecione um currículo em PDF</p>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            <span class="fw-bold fs-4">2</span>
+                        </div>
+                        <h6 class="mt-2">Configurar</h6>
+                        <p class="small text-muted">Escolha os critérios desejados</p>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            <span class="fw-bold fs-4">3</span>
+                        </div>
+                        <h6 class="mt-2">Analisar</h6>
+                        <p class="small text-muted">Obtenha resultados instantâneos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                        <i class="fas fa-question-circle me-2"></i>
+                        Como funciona a análise?
+                    </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        O sistema extrai o texto do PDF e busca por palavras-chave configuradas em cada critério.
+                        Cada correspondência encontrada contribui para a pontuação final, ponderada pelo peso do critério.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                        <i class="fas fa-file-upload me-2"></i>
+                        Que tipos de arquivo são aceitos?
+                    </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Atualmente, apenas arquivos PDF são suportados. O PDF deve conter texto (não apenas imagens digitalizadas).
+                        PDFs criados a partir de documentos Word ou outros formatos geralmente funcionam bem.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                        <i class="fas fa-cogs me-2"></i>
+                        Posso customizar os critérios?
+                    </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Sim! Você pode modificar pesos, descrições e palavras-chave editando o arquivo <code>criterios.json</code>.
+                        Também existem templates pré-configurados para diferentes profissões na página de Configuração.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                        <i class="fas fa-chart-line me-2"></i>
+                        Como interpretar a pontuação?
+                    </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><strong>80-100:</strong> Excelente compatibilidade ✅</li>
+                            <li><strong>60-79:</strong> Boa compatibilidade ✓</li>
+                            <li><strong>40-59:</strong> Compatibilidade moderada ⚠️</li>
+                            <li><strong>0-39:</strong> Baixa compatibilidade ❌</li>
+                        </ul>
+                        A pontuação é uma ferramenta de apoio, não substitui a análise humana completa.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                        <i class="fas fa-shield-alt me-2"></i>
+                        Meus dados estão seguros?
+                    </button>
+                </h2>
+                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Sim! A aplicação funciona 100% offline. Nenhum currículo ou dado é enviado para servidores externos.
+                        Os arquivos são processados localmente no seu computador e removidos após a análise.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        O que fazer se a análise não encontrar habilidades?
+                    </button>
+                </h2>
+                <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Verifique se:
+                        <ul>
+                            <li>O PDF contém texto (não apenas imagens)</li>
+                            <li>As palavras-chave estão corretas para sua área</li>
+                            <li>O currículo está em português ou inglês</li>
+                            <li>Você selecionou os critérios apropriados</li>
+                        </ul>
+                        Considere customizar as palavras-chave na configuração avançada.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links Úteis -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-link me-2"></i>
+                    Links Úteis
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Documentação</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="#" onclick="alert('Funcionalidade em desenvolvimento')">📖 Guia Completo</a></li>
+                            <li><a href="#" onclick="alert('Funcionalidade em desenvolvimento')">❓ FAQ Completo</a></li>
+                            <li><a href="#" onclick="alert('Funcionalidade em desenvolvimento')">🏗️ Arquitetura Técnica</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Configuração</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="{{ url_for('configuracao') }}">🎯 Configuração Avançada</a></li>
+                            <li><a href="#" onclick="alert('Funcionalidade em desenvolvimento')">📋 Templates por Profissão</a></li>
+                            <li><a href="#" onclick="alert('Funcionalidade em desenvolvimento')">⚙️ Personalização</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Suporte -->
+        <div class="card mt-4">
+            <div class="card-body text-center bg-light">
+                <h5>Precisa de Ajuda?</h5>
+                <p class="mb-3">
+                    Se você encontrou um problema ou tem dúvidas específicas,
+                    consulte a documentação completa ou entre em contato.
+                </p>
+                <div class="btn-group">
+                    <a href="{{ url_for('sobre') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Sobre
+                    </a>
+                    <a href="{{ url_for('configuracao') }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-cogs me-2"></i>
+                        Configuração
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

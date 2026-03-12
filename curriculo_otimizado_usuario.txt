@@ -1,0 +1,40 @@
+# Currículo Otimizado
+
+## Contato
+- Nome: [Seu Nome]
+- E-mail: [seuemail@email.com]
+- Telefone: [+55 11 99999-9999]
+- LinkedIn: [linkedin.com/in/seu-perfil]
+- GitHub: [github.com/seu-usuario]
+
+## Objetivo
+Desenvolvedor de Software com foco em backend, APIs e metodologias ágeis. Busco contribuir com soluções escaláveis e inovadoras.
+
+## Formação Acadêmica
+- Bacharelado em Ciência da Computação - Universidade XYZ (2018 - 2022)
+
+## Competências Técnicas
+- Linguagens: Python, JavaScript, Java
+- Frameworks: Flask, Django, React
+- Bancos de Dados: MySQL, PostgreSQL
+- Metodologias: Scrum, Kanban
+
+## Experiência de Projetos
+- **Sistema de Gestão de Tarefas**: Desenvolvido em Python e Flask, com integração ao PostgreSQL. Reduziu o tempo de gerenciamento em 30%.
+- **Aplicativo de E-commerce**: Frontend em React e backend em Django. Aumentou as vendas em 20%.
+
+## Experiência Profissional
+- **Desenvolvedor Backend - Empresa ABC (2023 - Presente)**
+  - Desenvolvi APIs RESTful escaláveis para integração de sistemas.
+  - Implementei soluções que reduziram o tempo de resposta em 40%.
+
+## Certificações
+- Certificação AWS Solutions Architect
+- Certificação Scrum Master
+
+## Outras Experiências
+- Participação em hackathons com foco em soluções de impacto social.
+
+---
+
+**Nota:** Este currículo foi otimizado para ATS e inclui palavras-chave relevantes para vagas de desenvolvimento de software.

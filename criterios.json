@@ -1,0 +1,89 @@
+{
+  "criterios": {
+    "Experiência": {
+      "descricao": "Anos de experiência na área",
+      "peso": 25,
+      "palavras_chave": [
+        "experiência",
+        "anos",
+        "trabalho",
+        "profissional",
+        "atuei",
+        "trabalhi"
+      ],
+      "tipo": "numerico"
+    },
+    "Formação Educacional": {
+      "descricao": "Nível de educação formal",
+      "peso": 20,
+      "palavras_chave": [
+        "graduação",
+        "mestrado",
+        "doutorado",
+        "bacharel",
+        "diploma",
+        "faculdade",
+        "universidade",
+        "superior"
+      ],
+      "tipo": "categorico"
+    },
+    "Habilidades Técnicas": {
+      "descricao": "Competências técnicas relevantes",
+      "peso": 30,
+      "palavras_chave": [
+        "python",
+        "javascript",
+        "java",
+        "sql",
+        "react",
+        "node",
+        "docker",
+        "aws",
+        "linux",
+        "git",
+        "html",
+        "css",
+        "api",
+        "rest"
+      ],
+      "tipo": "lista"
+    },
+    "Certificações": {
+      "descricao": "Certificações profissionais",
+      "peso": 15,
+      "palavras_chave": [
+        "certificado",
+        "certificação",
+        "certified",
+        "aws",
+        "google",
+        "microsoft",
+        "oracle",
+        "comptia"
+      ],
+      "tipo": "lista"
+    },
+    "Idiomas": {
+      "descricao": "Conhecimento de idiomas",
+      "peso": 10,
+      "palavras_chave": [
+        "inglês",
+        "espanhol",
+        "português",
+        "francês",
+        "fluente",
+        "intermediário",
+        "avançado",
+        "nativo"
+      ],
+      "tipo": "lista"
+    }
+  },
+  "configuracao_global": {
+    "pontuacao_minima_positiva": 60,
+    "pontuacao_excelente": 80,
+    "pontuacao_boa": 60,
+    "pontuacao_moderada": 40
+  }
+}

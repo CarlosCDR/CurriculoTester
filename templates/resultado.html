@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+
+{% block title %}Resultado da Análise - {{ nome_arquivo }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <!-- Header -->
+        <div class="card mb-4">
+            <div class="card-body text-center">
+                <h2 class="card-title">
+                    <i class="fas fa-chart-line text-primary me-2"></i>
+                    Resultado da Análise
+                </h2>
+                <p class="card-text">
+                    Currículo: <strong>{{ nome_arquivo }}</strong><br>
+                    <small class="text-muted">
+                        Análise realizada em {{ resultado.data or "Data atual" }}
+                    </small>
+                </p>
+            </div>
+        </div>
+
+        <!-- Pontuação Geral -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-trophy me-2"></i>
+                    Pontuação Geral
+                </h5>
+            </div>
+            <div class="card-body text-center">
+                {% set score = resultado.pontuacao_total %}
+                {% if score >= 80 %}
+                    {% set score_class = 'score-excelente' %}
+                    {% set score_text = 'Excelente' %}
+                {% elif score >= 60 %}
+                    {% set score_class = 'score-bom' %}
+                    {% set score_text = 'Bom' %}
+                {% elif score >= 40 %}
+                    {% set score_class = 'score-moderado' %}
+                    {% set score_text = 'Moderado' %}
+                {% else %}
+                    {% set score_class = 'score-baixo' %}
+                    {% set score_text = 'Baixo' %}
+                {% endif %}
+
+                <div class="score-circle {{ score_class }} mb-3">
+                    {{ "%.1f"|format(score) }}
+                </div>
+                <h4 class="text-muted">{{ score_text }}</h4>
+                <p class="mb-0">Compatibilidade com os critérios selecionados</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Pontos Positivos -->
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-check-circle me-2"></i>
+                            Pontos Positivos
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        {% if resultado.pontos_positivos %}
+                            <ul class="list-unstyled">
+                                {% for ponto in resultado.pontos_positivos %}
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    {{ ponto }}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p class="text-muted mb-0">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Nenhum ponto positivo identificado automaticamente.
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pontos Negativos -->
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Pontos Negativos
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        {% if resultado.pontos_negativos %}
+                            <ul class="list-unstyled">
+                                {% for ponto in resultado.pontos_negativos %}
+                                <li class="mb-2">
+                                    <i class="fas fa-times text-danger me-2"></i>
+                                    {{ ponto }}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p class="text-muted mb-0">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Nenhum ponto negativo identificado automaticamente.
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detalhes por Critério -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-chart-bar me-2"></i>
+                    Detalhes por Critério
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for criterio, dados in resultado.detalhes_criterios.items() %}
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h6 class="card-title">{{ criterio }}</h6>
+
+                                <!-- Progress Bar -->
+                                <div class="mb-2">
+                                    <div class="progress">
+                                        <div class="progress-bar"
+                                             role="progressbar"
+                                             style="width: {{ dados.pontuacao }}%"
+                                             aria-valuenow="{{ dados.pontuacao }}"
+                                             aria-valuemin="0"
+                                             aria-valuemax="100">
+                                            {{ "%.1f"|format(dados.pontuacao) }}%
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row text-center">
+                                    <div class="col-6">
+                                        <small class="text-muted">Peso</small>
+                                        <br>
+                                        <strong>{{ dados.peso }}%</strong>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted">Encontrados</small>
+                                        <br>
+                                        <strong>{{ dados.correspondencias }}</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Recomendações -->
+        {% if resultado.recomendacoes %}
+        <div class="card mt-4">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-lightbulb me-2"></i>
+                    Recomendações
+                </h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    {% for rec in resultado.recomendacoes %}
+                    <li class="mb-2">
+                        <i class="fas fa-arrow-right text-info me-2"></i>
+                        {{ rec }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Ações -->
+        <div class="card mt-4">
+            <div class="card-body text-center">
+                <div class="btn-group" role="group">
+                    <a href="{{ url_for('index') }}" class="btn btn-primary">
+                        <i class="fas fa-upload me-2"></i>
+                        Analisar Outro
+                    </a>
+                    <button onclick="window.print()" class="btn btn-secondary">
+                        <i class="fas fa-print me-2"></i>
+                        Imprimir
+                    </button>
+                    <button onclick="shareResults()" class="btn btn-info">
+                        <i class="fas fa-share me-2"></i>
+                        Compartilhar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function shareResults() {
+    const score = {{ resultado.pontuacao_total }};
+    const text = `Avaliei um currículo e obtive ${score.toFixed(1)} pontos! 🎯`;
+    const url = window.location.href;
+
+    if (navigator.share) {
+        navigator.share({
+            title: 'Resultado da Análise de Currículo',
+            text: text,
+            url: url
+        });
+    } else {
+        // Fallback para copiar para clipboard
+        const shareText = `${text}\n${url}`;
+        navigator.clipboard.writeText(shareText).then(() => {
+            alert('Link copiado para a área de transferência!');
+        });
+    }
+}
+
+// Animação das barras de progresso
+document.addEventListener('DOMContentLoaded', function() {
+    const progressBars = document.querySelectorAll('.progress-bar');
+    progressBars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0%';
+        setTimeout(() => {
+            bar.style.width = width;
+        }, 500);
+    });
+});
+</script>
+{% endblock %}

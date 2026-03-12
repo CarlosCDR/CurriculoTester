@@ -1,0 +1,174 @@
+{
+  "exemplos_vagas": {
+    "Desenvolvedor Python Junior": {
+      "criterios": {
+        "Formação Educacional": {
+          "descricao": "Nível de educação formal",
+          "peso": 20,
+          "palavras_chave": ["graduação", "bacharel", "faculdade", "python", "programação"],
+          "tipo": "categorico"
+        },
+        "Habilidades Técnicas": {
+          "descricao": "Python e tecnologias web",
+          "peso": 40,
+          "palavras_chave": ["python", "django", "flask", "sql", "postgresql", "git", "api", "rest"],
+          "tipo": "lista"
+        },
+        "Experiência": {
+          "descricao": "Experiência com Python",
+          "peso": 20,
+          "palavras_chave": ["python", "projeto", "desenvolvimento", "1 ano", "2 anos"],
+          "tipo": "numerico"
+        },
+        "Certificações": {
+          "descricao": "Certificações Python/Web",
+          "peso": 10,
+          "palavras_chave": ["python", "certificado", "google", "coursera"],
+          "tipo": "lista"
+        },
+        "Idiomas": {
+          "descricao": "Inglês",
+          "peso": 10,
+          "palavras_chave": ["inglês", "english", "fluente", "intermediário"],
+          "tipo": "lista"
+        }
+      }
+    },
+    "Desenvolvedor Full Stack": {
+      "criterios": {
+        "Experiência": {
+          "descricao": "Anos de experiência em desenvolvimento",
+          "peso": 25,
+          "palavras_chave": ["experiência", "anos", "desenvolv", "3 anos", "5 anos", "10 anos"],
+          "tipo": "numerico"
+        },
+        "Habilidades Técnicas Frontend": {
+          "descricao": "React, Vue, Angular",
+          "peso": 25,
+          "palavras_chave": ["react", "vue", "angular", "javascript", "typescript", "html", "css", "webpack"],
+          "tipo": "lista"
+        },
+        "Habilidades Técnicas Backend": {
+          "descricao": "Node.js, Python, Java",
+          "peso": 25,
+          "palavras_chave": ["node", "nodejs", "express", "python", "django", "java", "spring", "api"],
+          "tipo": "lista"
+        },
+        "Banco de Dados": {
+          "descricao": "SQL e NoSQL",
+          "peso": 15,
+          "palavras_chave": ["postgresql", "mongodb", "mysql", "redis", "sql", "database", "orm"],
+          "tipo": "lista"
+        },
+        "DevOps/Cloud": {
+          "descricao": "Docker, AWS, CI/CD",
+          "peso": 10,
+          "palavras_chave": ["docker", "aws", "kubernetes", "ci/cd", "jenkins", "gitlab", "github actions"],
+          "tipo": "lista"
+        }
+      }
+    },
+    "Analista de Dados": {
+      "criterios": {
+        "Formação": {
+          "descricao": "Educação em estatística ou correlata",
+          "peso": 20,
+          "palabras_chave": ["estatística", "matemática", "análise", "dados", "graduação"],
+          "tipo": "categorico"
+        },
+        "Ferramentas de Dados": {
+          "descricao": "Python, R, SQL",
+          "peso": 35,
+          "palabras_chave": ["python", "r", "sql", "pandas", "numpy", "scikit-learn", "matplotlib"],
+          "tipo": "lista"
+        },
+        "BI e Visualização": {
+          "descricao": "Tableau, Power BI, Looker",
+          "peso": 25,
+          "palabras_chave": ["tableau", "power bi", "looker", "bi", "dashboard", "grafana"],
+          "tipo": "lista"
+        },
+        "Experiência": {
+          "descricao": "Experiência em análise",
+          "peso": 15,
+          "palabras_chave": ["análise", "projeto", "dados", "relatório", "insights"],
+          "tipo": "numerico"
+        },
+        "Certificações": {
+          "descricao": "Certificações em análise",
+          "peso": 5,
+          "palabras_chave": ["certificado", "coursera", "datacamp", "udacity"],
+          "tipo": "lista"
+        }
+      }
+    },
+    "DevOps Engineer": {
+      "criterios": {
+        "Experiência DevOps": {
+          "descricao": "Anos de experiência em DevOps",
+          "peso": 25,
+          "palabras_chave": ["devops", "infra", "infrastructure", "2 anos", "5 anos"],
+          "tipo": "numerico"
+        },
+        "Containerização": {
+          "descricao": "Docker e Kubernetes",
+          "peso": 25,
+          "palabras_chave": ["docker", "kubernetes", "container", "docker-compose", "helm"],
+          "tipo": "lista"
+        },
+        "Cloud Platforms": {
+          "descricao": "AWS, Azure, GCP",
+          "peso": 20,
+          "palabras_chave": ["aws", "azure", "gcp", "ec2", "s3", "cloudformation"],
+          "tipo": "lista"
+        },
+        "CI/CD e Automação": {
+          "descricao": "Jenkins, GitLab CI, GitHub Actions",
+          "peso": 20,
+          "palabras_chave": ["ci/cd", "jenkins", "gitlab", "github actions", "ansible", "terraform"],
+          "tipo": "lista"
+        },
+        "Linguagens De Script": {
+          "descricao": "Bash, Python, Go",
+          "peso": 10,
+          "palabras_chave": ["bash", "shell", "python", "go", "scripting"],
+          "tipo": "lista"
+        }
+      }
+    },
+    "Gerente de Projetos": {
+      "criterios": {
+        "Experiência em Gestão": {
+          "descricao": "Liderança e gerenciamento de projetos",
+          "peso": 30,
+          "palabras_chave": ["gerente", "líder", "liderança", "gestão", "projetos", "equipe"],
+          "tipo": "numerico"
+        },
+        "Metodologias Ágeis": {
+          "descricao": "Scrum, Kanban, SAFe",
+          "peso": 25,
+          "palabras_chave": ["scrum", "agile", "kanban", "sprint", "safe", "ágil"],
+          "tipo": "lista"
+        },
+        "Comunicação e Soft Skills": {
+          "descricao": "Comunicação, negociação, resolução de conflitos",
+          "peso": 20,
+          "palabras_chave": ["comunicação", "negociação", "liderança", "stakeholder", "equipe"],
+          "tipo": "lista"
+        },
+        "Ferramentas de Gestão": {
+          "descricao": "Jira, Azure DevOps, Asana",
+          "peso": 15,
+          "palabras_chave": ["jira", "asana", "monday", "trello", "azure devops"],
+          "tipo": "lista"
+        },
+        "Certificações": {
+          "descricao": "PMP, PRINCE2, CSM",
+          "peso": 10,
+          "palabras_chave": ["pmp", "prince2", "csm", "pmi", "certificado"],
+          "tipo": "lista"
+        }
+      }
+    }
+  }
+}

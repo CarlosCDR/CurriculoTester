@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block title %}Sobre - Avaliador de Currículos{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body text-center py-5">
+                <i class="fas fa-file-alt fa-4x text-primary mb-3"></i>
+                <h1 class="card-title">Avaliador de Currículos</h1>
+                <p class="lead">Versão 1.0 - Março 2026</p>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-code text-primary me-2"></i>
+                            Tecnologias
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fab fa-python text-warning me-2"></i>Python 3.7+</li>
+                            <li><i class="fas fa-flask text-info me-2"></i>Flask (Web)</li>
+                            <li><i class="fas fa-window-maximize text-secondary me-2"></i>Tkinter (Desktop)</li>
+                            <li><i class="fas fa-file-pdf text-danger me-2"></i>PyPDF2</li>
+                            <li><i class="fab fa-bootstrap text-purple me-2"></i>Bootstrap 5</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-star text-warning me-2"></i>
+                            Funcionalidades
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Análise automática</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Critérios customizáveis</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Interface web moderna</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Relatórios detalhados</li>
+                            <li><i class="fas fa-check text-success me-2"></i>100% offline</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-info-circle me-2"></i>
+                    Sobre o Projeto
+                </h5>
+            </div>
+            <div class="card-body">
+                <p>
+                    O Avaliador de Currículos é uma ferramenta inteligente desenvolvida para facilitar
+                    o processo de análise de currículos em PDF. Utilizando algoritmos de processamento
+                    de texto e análise de palavras-chave, o sistema fornece pontuações automáticas
+                    e recomendações detalhadas.
+                </p>
+
+                <h6>Objetivos:</h6>
+                <ul>
+                    <li>Automatizar a triagem inicial de currículos</li>
+                    <li>Fornecer análises objetivas e consistentes</li>
+                    <li>Reduzir o tempo gasto na avaliação manual</li>
+                    <li>Permitir customização conforme necessidades específicas</li>
+                </ul>
+
+                <h6>Características Técnicas:</h6>
+                <ul>
+                    <li><strong>Processamento:</strong> Extração de texto de PDFs</li>
+                    <li><strong>Análise:</strong> Busca por palavras-chave configuráveis</li>
+                    <li><strong>Pontuação:</strong> Sistema de pesos e compatibilidade</li>
+                    <li><strong>Interface:</strong> Web moderna + Desktop tradicional</li>
+                    <li><strong>Segurança:</strong> 100% offline, sem envio de dados</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-code-branch me-2"></i>
+                    Desenvolvimento
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Versão Desktop</h6>
+                        <p class="small">
+                            Aplicação standalone com interface Tkinter.
+                            Ideal para uso individual e offline.
+                        </p>
+                        <code class="d-block mb-2">python main.py</code>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Versão Web</h6>
+                        <p class="small">
+                            Interface web moderna com Flask.
+                            Perfeita para compartilhamento e uso em equipe.
+                        </p>
+                        <code class="d-block mb-2">python app_web.py</code>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="text-center">
+                    <p class="mb-2">
+                        <strong>Desenvolvido com ❤️ em Python</strong>
+                    </p>
+                    <p class="text-muted small mb-0">
+                        Código aberto e gratuito - Modifique conforme suas necessidades
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
