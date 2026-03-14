@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Application generated files
+uploads/
+# Instalador/ is a PyInstaller build output directory - not tracked in source control
+Instalador/
+*.spec
+
+# Generated resume files (user-specific output)
+curriculo_otimizado.pdf
+curriculo_otimizado.txt
+curriculo_otimizado_usuario.pdf
+curriculo_otimizado_usuario.txt
+curriculo_ats_friendly.pdf
+curriculo_corrigido.pdf
+curriculo_original.txt
+
+# Flask session files
+flask_session/
+
+# Logs
+*.log
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
